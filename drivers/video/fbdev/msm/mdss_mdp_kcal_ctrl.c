@@ -260,7 +260,6 @@ static void mdss_mdp_kcal_update_pa(struct kcal_lut_data *lut_data)
 		mdss_mdp_pa_config(fb0_ctl->mfd, &pa_config, &copyback);
 	} else {
 		memset(&pa_v2_config, 0, sizeof(struct mdp_pa_v2_cfg_data));
-		
 		pa_v2_config.version = mdp_pa_v1_7;
 		pa_v2_config.block = MDP_LOGICAL_BLOCK_DISP_0;
 		pa_v2_config.pa_v2_data.flags = lut_data->enable ?
@@ -399,7 +398,7 @@ static ssize_t kcal_enable_store(struct device *dev,
 	if (mdss_mdp_kcal_is_panel_on()) {
 		mdss_mdp_kcal_update_pcc(lut_data);
 		mdss_mdp_kcal_update_pa(lut_data);
-		//mdss_mdp_kcal_update_igc(lut_data);
+		mdss_mdp_kcal_update_igc(lut_data);
 	} else
 		lut_data->queue_changes = true;
 
@@ -425,8 +424,14 @@ static ssize_t kcal_invert_store(struct device *dev,
 		(lut_data->invert == kcal_invert))
 		return -EINVAL;
 
-	//disable
-	lut_data->invert = 0;
+
+	lut_data->invert = kcal_invert;
+
+	if (mdss_mdp_kcal_is_panel_on())
+		mdss_mdp_kcal_update_igc(lut_data);
+	else
+		lut_data->queue_changes = true;
+
 
 	return count;
 }
