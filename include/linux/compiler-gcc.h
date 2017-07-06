@@ -302,3 +302,4 @@
  * code
  */
 #define uninitialized_var(x) x = x
+
