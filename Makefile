@@ -402,19 +402,6 @@ KBUILD_CFLAGS += -DHQ_BUILD_FACTORY
 endif
 # Added by zhangyuzhou for kernel macro custom config end
 
-# TODO: remove me b/62057517
-KBUILD_CFLAGS += \
-	-Wno-address-of-packed-member \
-	-Wno-unneeded-internal-declaration \
-	-Wno-enum-conversion \
-	-Wno-section \
-	-Wno-duplicate-decl-specifier \
-	-Wno-array-bounds \
-	-Wno-logical-not-parentheses \
-	-Wno-constant-conversion \
-	-Wno-parentheses-equality \
-	-Wno-gcc-compat \
-
 ifeq ($(TARGET_BOARD_TYPE),auto)
 KBUILD_CFLAGS    += -DCONFIG_PLATFORM_AUTO
 endif
