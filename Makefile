@@ -407,6 +407,14 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 ifeq ($(TARGET_BOARD_TYPE),auto)
 KBUILD_CFLAGS    += -DCONFIG_PLATFORM_AUTO
 endif
+
+# Added by zhangyuzhou for kernel macro custom config begin
+ifeq ($(HQ_BUILD_FACTORY),true)
+KBUILD_CPPFLAGS += -DHQ_BUILD_FACTORY
+KBUILD_CFLAGS += -DHQ_BUILD_FACTORY
+endif
+# Added by zhangyuzhou for kernel macro custom config end
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__ $(call cc-option,-fno-PIE)
