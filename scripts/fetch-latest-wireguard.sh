@@ -5,9 +5,6 @@ USER_AGENT="WireGuard-AndroidROMBuild/0.2 ($(uname -a))"
 exec 9>.wireguard-fetch-lock
 flock -n 9 || exit 0
 
-exec 9>.wireguard-fetch-lock
-flock -n 9 || exit 0
-
 [[ $(( $(date +%s) - $(stat -c %Y "net/wireguard/.check" 2>/dev/null || echo 0) )) -gt 86400 ]] || exit 0
 
 while read -r distro package version _; do
@@ -29,3 +26,4 @@ mkdir -p net/wireguard
 curl -A "$USER_AGENT" -LsS "https://git.zx2c4.com/WireGuard/snapshot/WireGuard-$VERSION.tar.xz" | tar -C "net/wireguard" -xJf - --strip-components=2 "WireGuard-$VERSION/src"
 sed -i 's/tristate/bool/;s/default m/default y/;' net/wireguard/Kconfig
 touch net/wireguard/.check
+
