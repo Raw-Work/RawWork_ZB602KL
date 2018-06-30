@@ -3290,3 +3290,4 @@ late_initcall(ipa_wwan_init);
 module_exit(ipa_wwan_cleanup);
 MODULE_DESCRIPTION("WWAN Network Interface");
 MODULE_LICENSE("GPL v2");
+
