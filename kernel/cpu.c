@@ -452,6 +452,10 @@ int cpu_down(unsigned int cpu)
 {
 	int err;
 
+	/* kthreads require one little-cluster CPU to stay online */
+	if (!cpu)
+		return -EINVAL;
+
 	cpu_maps_update_begin();
 
 	if (cpu_hotplug_disabled) {
@@ -699,7 +703,7 @@ void enable_nonboot_cpus(void)
 		error = _cpu_up(cpu, 1);
 		trace_suspend_resume(TPS("CPU_ON"), cpu, false);
 		if (!error) {
-			pr_info("CPU%d is up\n", cpu);
+			pr_debug("CPU%d is up\n", cpu);
 			cpu_device = get_cpu_device(cpu);
 			if (!cpu_device)
 				pr_err("%s: failed to get cpu%d device\n",
