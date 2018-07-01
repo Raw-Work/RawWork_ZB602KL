@@ -38,6 +38,9 @@ Module.symvers
 *.dwo
 *.su
 
+# Build Script
+kernel.sh
+
 #
 # Top-level generic files
 #
