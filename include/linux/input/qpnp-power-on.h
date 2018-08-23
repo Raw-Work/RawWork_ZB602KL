@@ -63,6 +63,10 @@ enum pon_restart_reason {
 	/* 32 ~ 63 for OEMs/ODMs secific features */
 	PON_RESTART_REASON_OEM_MIN		= 0x20,
 	PON_RESTART_REASON_OEM_MAX		= 0x3f,
+
+	/* Huaqin add for ZQL1650-1168 by liunianliang at 2018/04/18 start */
+	PON_RESTART_REASON_ASUS_UNLOCK		= 0x08,
+	/* Huaqin add for ZQL1650-1168 by liunianliang at 2018/04/18 end */
 };
 
 #ifdef CONFIG_INPUT_QPNP_POWER_ON
