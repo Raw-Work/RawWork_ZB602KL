@@ -772,12 +772,10 @@ static int find_mux_channel_index(uint32_t mux_id)
 static int find_vchannel_name_index(const char *vchannel_name)
 {
 	int i;
-	/* Huaqin modify for ZQL1650-620 by liunianliang at 2018/03/09 start */
 	for (i = 0; i < rmnet_index; i++) {
 		if (0 == strcmp(mux_channel[i].vchannel_name, vchannel_name))
 			return i;
 	}
-	/* Huaqin modify for ZQL1650-620 by liunianliang at 2018/03/09 end */
 	return MAX_NUM_OF_MUX_CHANNEL;
 }
 
@@ -1433,6 +1431,8 @@ static int ipa_wwan_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
 
 	/*  Extended IOCTLs  */
 	case RMNET_IOCTL_EXTENDED:
+		if (!ns_capable(dev_net(dev)->user_ns, CAP_NET_ADMIN))
+			return -EPERM;
 		IPAWANDBG("get ioctl: RMNET_IOCTL_EXTENDED\n");
 		if (copy_from_user(&extend_ioctl_data,
 			(u8 *)ifr->ifr_ifru.ifru_data,

@@ -5811,3 +5811,4 @@ module_exit(rmi4_fw_update_module_exit);
 MODULE_AUTHOR("Synaptics, Inc.");
 MODULE_DESCRIPTION("Synaptics DSX FW Update Module");
 MODULE_LICENSE("GPL v2");
+
