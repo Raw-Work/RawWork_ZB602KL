@@ -488,3 +488,4 @@ uint32_t f2fs_validate_encryption_key_size(uint32_t mode, uint32_t size)
 		return size;
 	return 0;
 }
+

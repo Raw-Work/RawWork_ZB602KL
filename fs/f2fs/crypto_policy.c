@@ -246,3 +246,4 @@ int f2fs_inherit_context(struct inode *parent, struct inode *child,
 				F2FS_XATTR_NAME_ENCRYPTION_CONTEXT, &ctx,
 				sizeof(ctx), ipage, XATTR_CREATE);
 }
+

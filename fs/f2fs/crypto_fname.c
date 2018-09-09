@@ -436,3 +436,4 @@ void f2fs_fname_free_filename(struct f2fs_filename *fname)
 	fname->usr_fname = NULL;
 	fname->disk_name.name = NULL;
 }
+

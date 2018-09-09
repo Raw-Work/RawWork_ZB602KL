@@ -271,3 +271,4 @@ int f2fs_has_encryption_key(struct inode *inode)
 
 	return (fi->i_crypt_info != NULL);
 }
+
