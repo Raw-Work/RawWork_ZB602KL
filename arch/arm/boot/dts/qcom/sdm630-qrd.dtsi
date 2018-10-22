@@ -384,6 +384,7 @@
 
 	};*/
 /* Huaqin modify for ZQL1650-164 by zhengwu.lu at 2018/01/24 end */
+	};
 
 	hbtp {
 		compatible = "qcom,hbtp-input";
