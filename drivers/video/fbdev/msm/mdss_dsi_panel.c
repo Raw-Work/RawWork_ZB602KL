@@ -378,9 +378,11 @@ free:
 ret:
 	return rc;
 }
+
 /* Huaqin modify for ZQL1650-1523 by zhangxiude at 2018/07/18 start */
 extern long syna_gesture_mode;
 /* Huaqin modify for ZQL1650-1523 by zhangxiude at 2018/07/18 end */
+
 int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
 {
 	struct mdss_dsi_ctrl_pdata *ctrl_pdata = NULL;
@@ -505,6 +507,7 @@ int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
 			gpio_set_value((ctrl_pdata->disp_en_gpio), 0);
 			gpio_free(ctrl_pdata->disp_en_gpio);
 		}
+
 		/* Huaqin modify for Modification sequence by qimaokang at 2018/05/31 start */
 		printk("qimk panel name:%s\n",mdss_mdp_panel);
 		if(strstr(mdss_mdp_panel,"qcom,mdss_dsi_td4310_1080p_video_txd"))
