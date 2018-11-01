@@ -1232,4 +1232,8 @@ source "drivers/input/touchscreen/synaptics_dsx/Kconfig"
 #Huaqin modify for ZQL1650-1357 by diganyun at 2018/05/22 end
 source "drivers/input/touchscreen/focaltech_touch/Kconfig"
 
+if MACH_ASUS_X00T
+source "drivers/input/touchscreen/NVT_Touch/Kconfig"
+endif
+
 endif
