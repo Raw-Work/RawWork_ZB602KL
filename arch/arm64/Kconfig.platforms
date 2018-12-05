@@ -203,7 +203,7 @@ config MACH_ASUS_DUMMY
 	help
 	  A stub configuration that doesn't enable support for anything.
 
-config MACH_ASUS_X00T
+config MACH_ASUS_X00TD
 	bool "ZenFone Max Pro (M1)"
 	select MACH_ASUS_SDM660
 	help

@@ -940,7 +940,7 @@ typedef enum nxpTfa9912BfEnumList {
    { 0xffff,"Unknown bitfield enum" }   /* not found */\
 };
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define TFA9912_BITNAMETABLE static tfaBfName_t Tfa9912BitNames[]= {\
    { 0x0, "powerdown"},    /* Powerdown selection                               , */\
    { 0x10, "reset"},    /* I2C Reset - Auto clear                            , */\
@@ -1669,7 +1669,7 @@ typedef enum nxpTfa9912BfEnumList {
    { 0xff81, "fro8_boost_i"},    /* Self bias current selection                       , */\
    { 0xffff,"Unknown bitfield enum" }    /* not found */\
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 enum tfa9912_irq {
 	tfa9912_irq_stvdds = 0,

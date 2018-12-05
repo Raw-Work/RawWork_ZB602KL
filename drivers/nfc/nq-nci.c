@@ -46,7 +46,7 @@ static const struct of_device_id msm_match_table[] = {
 MODULE_DEVICE_TABLE(of, msm_match_table);
 
 #define MAX_BUFFER_SIZE			(320)
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define WAKEUP_SRC_TIMEOUT		(5000)
 #else
 #define WAKEUP_SRC_TIMEOUT		(2000)
@@ -466,7 +466,7 @@ int nfc_ioctl_power_states(struct file *filp, unsigned long arg)
 		 * interrupts to avoid spurious notifications to upper
 		 * layers.
 		 */
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 		nqx_disable_irq(nqx_dev);
 #endif
 		dev_dbg(&nqx_dev->client->dev,
@@ -520,7 +520,7 @@ int nfc_ioctl_power_states(struct file *filp, unsigned long arg)
 				return -EBUSY; /* Device or resource busy */
 			}
 		}
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		if (!nqx_dev->irq_enabled)
 			nqx_enable_irq(nqx_dev);
 #endif
@@ -1080,7 +1080,7 @@ static int nqx_probe(struct i2c_client *client,
 	 *
 	 */
 	r = nfcc_hw_check(client, nqx_dev);
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 	if (r) {
 		/* make sure NFCC is not enabled */
 		gpio_set_value(platform_data->en_gpio, 0);

@@ -43,7 +43,7 @@
 #include "synaptics_dsx_core.h"
 
 #define FW_IHEX_NAME "synaptics/startup_fw_update.bin"
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define FW_IMAGE_NAME "startup_fw_update.img"
 #define DO_STARTUP_FW_UPDATE
 #else
@@ -63,7 +63,7 @@
 #define MAX_WRITE_SIZE 4096
 */
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define ENABLE_SYS_REFLASH true
 #else
 #define ENABLE_SYS_REFLASH false
@@ -3960,7 +3960,7 @@ int set_tddi_lockdown_data(unsigned char *lockdown_data, unsigned short leng)
 	if (retval < 0)
 		goto exit;
 
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 	blk_cnt = fwu->blkcount.tddi_lockdown_data;
 #endif
 

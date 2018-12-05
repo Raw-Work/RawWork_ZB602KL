@@ -820,7 +820,7 @@ uint16_t tfa_get_bf_value(const uint16_t bf, const uint16_t reg_value);
 int tfa_write_reg(struct tfa_device *tfa, const uint16_t bf, const uint16_t reg_value);
 int tfa_read_reg(struct tfa_device *tfa, const uint16_t bf);
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 /* bitfield */
 /** 
  * get the datasheet or bitfield name corresponding to the bitfield number
@@ -855,7 +855,7 @@ uint16_t tfaContBfEnum(const char *name, unsigned short rev);
 * @param name is the bitfield name for which to get the bitfield number
  */
 uint16_t tfaContBfEnumAny(const char *name);
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 #define TFA_FAM(tfa, fieldname) ((tfa->tfa_family == 1) ? TFA1_BF_##fieldname :  TFA2_BF_##fieldname)
 #define TFA_FAM_FW(tfa, fwname) ((tfa->tfa_family == 1) ? TFA1_FW_##fwname :  TFA2_FW_##fwname)

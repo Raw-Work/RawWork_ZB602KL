@@ -125,7 +125,7 @@
    { 0xffff,"Unknown bitfield enum" }   /* not found */\
 };
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define TFA9891_BITNAMETABLE static tfaBfName_t Tfa9891BitNames[]= {\
    { 0x0, "POR"},    /* POR                                               , */\
    { 0x10, "PLL_LOCK"},    /* PLL                                               , */\
@@ -507,6 +507,6 @@
    { 0x8f0f, "production_data6"},    /* (key1 protected)                                  , */\
    { 0xffff,"Unknown bitfield enum" }    /* not found */\
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 #endif /* TFA_INC_TFA9891_TFAFIELDNAMES_H_ */

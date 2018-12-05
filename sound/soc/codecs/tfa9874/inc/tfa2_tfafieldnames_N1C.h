@@ -796,7 +796,7 @@ typedef enum nxpTfa2BfEnumList {
    { 0xffff,"Unknown bitfield enum" }   /* not found */\
 };
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define TFA2_BITNAMETABLE static tfaBfName_t Tfa2BitNames[]= {\
    { 0x0, "powerdown"},    /* Powerdown selection                               , */\
    { 0x10, "reset"},    /* I2C Reset - Auto clear                            , */\
@@ -1447,7 +1447,7 @@ typedef enum nxpTfa2BfEnumList {
    { 0xff05, "calibr_osc_delta_ndiv"},    /* Calibration data for OSC1M, signed number representation, */\
    { 0xffff,"Unknown bitfield enum" }    /* not found */\
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 enum tfa2_irq {
 	tfa2_irq_stvdds = 0,

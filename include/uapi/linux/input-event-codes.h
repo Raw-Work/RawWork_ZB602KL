@@ -336,7 +336,7 @@
 
 #define KEY_MICMUTE		248	/* Mute / unmute the microphone */
 
-#if defined(CONFIG_MACH_ASUS_X00T) && (defined(CONFIG_TOUCHSCREEN_NT36xxx) || defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27))
+#if defined(CONFIG_MACH_ASUS_X00TD) && (defined(CONFIG_TOUCHSCREEN_NT36xxx) || defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27))
 #define KEY_TP_GESTURE_C 	249
 #define KEY_TP_GESTURE_E 	250
 #define KEY_TP_GESTURE_S 	251
@@ -613,7 +613,7 @@
 #define KEY_BRIGHTNESS_MIN		0x250	/* Set Brightness to Minimum */
 #define KEY_BRIGHTNESS_MAX		0x251	/* Set Brightness to Maximum */
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #if defined(CONFIG_CDFINGER_FP) || defined(CONFIG_GOODIX_FP)
 #define FP_KEY_UP		0x258
 #define FP_KEY_DOWN		0x259
@@ -674,7 +674,7 @@
 #define BTN_TRIGGER_HAPPY39		0x2e6
 #define BTN_TRIGGER_HAPPY40		0x2e7
 
-#if defined(CONFIG_MACH_ASUS_X00T) && defined(CONFIG_INPUT_SX9310)
+#if defined(CONFIG_MACH_ASUS_X00TD) && defined(CONFIG_INPUT_SX9310)
 #define KEY_SARSENSOR_NEAR		0x2ea
 #define KEY_SARSENSOR_FAR		0x2eb
 #endif

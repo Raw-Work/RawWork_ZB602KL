@@ -46,7 +46,7 @@
 #include <linux/input/mt.h>
 #endif
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #include <linux/init.h>
 #include <linux/cdev.h>
 #include <linux/fs.h>
@@ -91,7 +91,7 @@
 #define FB_READY_WAIT_MS 100
 #define FB_READY_TIMEOUT_S 30
 */
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define SYNA_TDDI
 #endif
 #ifdef SYNA_TDDI
@@ -137,7 +137,7 @@
 #define F12_CONTINUOUS_MODE 0x00
 #define F12_WAKEUP_GESTURE_MODE 0x02
 #define F12_UDG_DETECT 0x0f
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define F12_DOUBLECLICK_DETECT 0x03
 #define F12_SWIPE_DETECT 0x07
 #define F12_VEE_DETECT 0x0a
@@ -1098,7 +1098,7 @@ static ssize_t synaptics_rmi4_virtual_key_map_show(struct kobject *kobj,
 	return count;
 }
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 long syna_gesture_mode;
 struct synaptics_rmi4_data *syna_rmi4_data;
 
@@ -1180,7 +1180,7 @@ int create_gesture_node_syna(void) {
 void destroy_gesture_syna(void) {
 	kobject_put(gesture_kobject);
 }
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 static void synaptics_rmi4_f11_wg(struct synaptics_rmi4_data *rmi4_data,
 		bool enable)
@@ -1260,13 +1260,13 @@ static void synaptics_rmi4_f12_wg(struct synaptics_rmi4_data *rmi4_data,
 	}
 
 	if (enable)
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		reporting_control[2] = F12_WAKEUP_GESTURE_MODE;
 #else
 		reporting_control[rmi4_data->set_wakeup_gesture] = F12_WAKEUP_GESTURE_MODE;
 #endif
 	else
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		reporting_control[2] = F12_CONTINUOUS_MODE;
 #else
 		reporting_control[rmi4_data->set_wakeup_gesture] = F12_CONTINUOUS_MODE;
@@ -1457,7 +1457,7 @@ exit:
 	return touch_count;
 }
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 static uint32_t synaptics_check_unicode_gesture(
 			struct synaptics_rmi4_data *rmi4_data, int gesture_id)
 {
@@ -1493,7 +1493,7 @@ static uint32_t synaptics_check_unicode_gesture(
 
 	return keycode;
 }
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 static int synaptics_rmi4_f12_abs_report(struct synaptics_rmi4_data *rmi4_data,
 		struct synaptics_rmi4_fn *fhandler)
@@ -1512,7 +1512,7 @@ static int synaptics_rmi4_f12_abs_report(struct synaptics_rmi4_data *rmi4_data,
 	int wx;
 	int wy;
 	int temp;
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	int gesture_count= 0;
 	uint32_t keycode = 0;
 	int abs_x;
@@ -1557,14 +1557,14 @@ static int synaptics_rmi4_f12_abs_report(struct synaptics_rmi4_data *rmi4_data,
 		if (retval < 0)
 			return 0;
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		for (; gesture_count<5; gesture_count++)
 			pr_debug("[%d] DGY %d\n", gesture_count,
 				rmi4_data->gesture_detection[gesture_count]);
 #endif
 
 		gesture_type = rmi4_data->gesture_detection[0];
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		gesture_x_distance = rmi4_data->gesture_detection[1];
 		gesture_y_distance = rmi4_data->gesture_detection[2];
 
@@ -1609,15 +1609,15 @@ static int synaptics_rmi4_f12_abs_report(struct synaptics_rmi4_data *rmi4_data,
 #else
 		if (gesture_type && gesture_type != F12_UDG_DETECT) {
 			input_report_key(rmi4_data->input_dev, KEY_WAKEUP, 1);
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 			input_sync(rmi4_data->input_dev);
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 			input_report_key(rmi4_data->input_dev, keycode, 0);
 #else
 			input_report_key(rmi4_data->input_dev, KEY_WAKEUP, 0);
 #endif
 			input_sync(rmi4_data->input_dev);
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 			}
 #endif
 			/* synaptics_rmi4_wakeup_gesture(rmi4_data, false); */
@@ -2829,7 +2829,7 @@ static int synaptics_rmi4_f12_init(struct synaptics_rmi4_data *rmi4_data,
 
 	}
 
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 	retval = synaptics_rmi4_f12_find_sub(rmi4_data,
 			fhandler, query_5->data, sizeof(query_5->data),
 			6, 20, 0);
@@ -3794,7 +3794,7 @@ static void synaptics_rmi4_set_params(struct synaptics_rmi4_data *rmi4_data)
 
 	if (rmi4_data->f11_wakeup_gesture || rmi4_data->f12_wakeup_gesture) {
 		set_bit(KEY_WAKEUP, rmi4_data->input_dev->keybit);
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		input_set_capability(rmi4_data->input_dev, EV_KEY,
 					GESTURE_EVENT_DOUBLE_CLICK);
 		set_bit(KEY_C, rmi4_data->input_dev->keybit);
@@ -4584,7 +4584,7 @@ static int synaptics_rmi4_probe(struct platform_device *pdev)
 
 	platform_set_drvdata(pdev, rmi4_data);
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	syna_rmi4_data = rmi4_data;
 #endif
 
@@ -4714,7 +4714,7 @@ static int synaptics_rmi4_probe(struct platform_device *pdev)
 	interrupt_signal.si_code = SI_USER;
 #endif
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	er = create_gesture_node_syna();
 #endif
 
@@ -4782,7 +4782,7 @@ err_set_input_dev:
 
 err_ui_hw_init:
 err_set_gpio:
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	syna_lcm_power_source_ctrl(rmi4_data, 0);
 	syna_lcm_bias_power_deinit(rmi4_data);
 err_power_resource_init_fail:
@@ -4875,7 +4875,7 @@ static int synaptics_rmi4_fb_notifier_cb(struct notifier_block *self,
 			fb_notifier);
 
 	if (evdata && evdata->data) {
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		if (event == FB_EARLY_EVENT_BLANK)
 #else
 		if (rmi4_data && event == FB_EVENT_BLANK)
@@ -4886,7 +4886,7 @@ static int synaptics_rmi4_fb_notifier_cb(struct notifier_block *self,
 				synaptics_rmi4_suspend(&rmi4_data->pdev->dev);
 				rmi4_data->fb_ready = false;
 			}
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		}
 		if (event == FB_EVENT_BLANK) {
 			transition = evdata->data;
@@ -4946,7 +4946,7 @@ static void synaptics_rmi4_early_suspend(struct early_suspend *h)
 				sizeof(device_ctrl));
 	}
 	synaptics_rmi4_wakeup_gesture(rmi4_data, true);
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	udelay(TDDI_LPWG_WAIT_US);
 #else
 	usleep(TDDI_LPWG_WAIT_US);
@@ -5060,7 +5060,7 @@ static int synaptics_rmi4_suspend(struct device *dev)
 					sizeof(device_ctrl));
 		}
 		synaptics_rmi4_wakeup_gesture(rmi4_data, true);
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		udelay(TDDI_LPWG_WAIT_US);
 #else
 		usleep(TDDI_LPWG_WAIT_US);
@@ -5082,7 +5082,7 @@ exit:
 
 	rmi4_data->suspend = true;
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	if (rmi4_data->enable_wakeup_gesture)
 		pr_debug("gesture suspend end not disable vsp/vsn\n");
 	else {
@@ -5103,7 +5103,7 @@ static int synaptics_rmi4_resume(struct device *dev)
 	struct synaptics_rmi4_exp_fhandler *exp_fhandler;
 	struct synaptics_rmi4_data *rmi4_data = dev_get_drvdata(dev);
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	/* enable vsp/vsn */
 	syna_lcm_power_source_ctrl(rmi4_data, 1);
 #endif
@@ -5112,7 +5112,7 @@ static int synaptics_rmi4_resume(struct device *dev)
 
 	if (rmi4_data->enable_wakeup_gesture) {
 		disable_irq_wake(rmi4_data->irq);
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 		synaptics_rmi4_wakeup_gesture(rmi4_data, false);
 #endif
 		goto exit;
@@ -5190,7 +5190,7 @@ static void __exit synaptics_rmi4_exit(void)
 module_init(synaptics_rmi4_init);
 module_exit(synaptics_rmi4_exit);
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 EXPORT_SYMBOL(syna_gesture_mode);
 #endif
 

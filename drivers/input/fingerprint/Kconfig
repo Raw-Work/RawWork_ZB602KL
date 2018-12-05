@@ -2,7 +2,7 @@
 # Fingerprint driver configuration
 #
 
-if MACH_ASUS_X00T
+if MACH_ASUS_X00TD
 
 menuconfig INPUT_FINGERPRINT
 	bool "Fingerprint"

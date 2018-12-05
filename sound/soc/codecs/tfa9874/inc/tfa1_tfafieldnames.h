@@ -385,7 +385,7 @@ typedef enum nxpTfa1BfEnumList {
    { 0xffff,"Unknown bitfield enum" }   /* not found */\
 };
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define TFA1_BITNAMETABLE static tfaBfName_t Tfa1BitNames[]= {\
    { 0x0, "flag_por"},    /* Power-on-reset flag                               , */\
    { 0x10, "flag_pll_lock"},    /* PLL lock                                          , */\
@@ -847,7 +847,7 @@ typedef enum nxpTfa1BfEnumList {
    { 0x8f0f, "production_data6"},    /* (key1 protected)                                  , */\
    { 0xffff,"Unknown bitfield enum" }    /* not found */\
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 enum tfa1_irq {
 	tfa1_irq_vdds = 0,

@@ -2898,7 +2898,7 @@ void kmsg_dump(enum kmsg_dump_reason reason)
 
 	rcu_read_lock();
 	list_for_each_entry_rcu(dumper, &dump_list, list) {
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 		if (dumper->max_reason && reason > dumper->max_reason)
 			continue;
 #endif

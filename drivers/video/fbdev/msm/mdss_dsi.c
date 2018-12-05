@@ -34,14 +34,14 @@
 #include "mdss_debug.h"
 #include "mdss_dsi_phy.h"
 #include "mdss_dba_utils.h"
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #include "mdss_panel.h"
 #endif
 #include "mdss_livedisplay.h"
 
 #define CMDLINE_DSI_CTL_NUM_STRING_LEN 2
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 extern char mdss_mdp_panel[MDSS_MAX_PANEL_LEN];
 #endif
 
@@ -371,7 +371,7 @@ static int mdss_dsi_regulator_init(struct platform_device *pdev,
 	return rc;
 }
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 extern void mdss_dsi_panel_cmds_send(struct mdss_dsi_ctrl_pdata *ctrl,
 					struct dsi_panel_cmds *pcmds,
 					u32 flags);
@@ -399,7 +399,7 @@ static int mdss_dsi_panel_power_off(struct mdss_panel_data *pdata)
 	if (mdss_dsi_pinctrl_set_state(ctrl_pdata, false))
 		pr_debug("reset disable: pinctrl not enabled\n");
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	mdelay(5);
 #endif
 
@@ -1338,7 +1338,7 @@ static int mdss_dsi_off(struct mdss_panel_data *pdata, int power_state)
 		goto panel_power_ctrl;
 	}
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	ret = mdss_dsi_panel_power_ctrl(pdata, power_state);
 #endif
 
@@ -1369,7 +1369,7 @@ static int mdss_dsi_off(struct mdss_panel_data *pdata, int power_state)
 			  MDSS_DSI_CORE_CLK, MDSS_DSI_CLK_OFF);
 
 panel_power_ctrl:
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 	ret = mdss_dsi_panel_power_ctrl(pdata, power_state);
 	if (ret) {
 		pr_err("%s: Panel power off failed\n", __func__);
@@ -3151,7 +3151,7 @@ static struct device_node *mdss_dsi_pref_prim_panel(
  *
  * returns pointer to panel node on success, NULL on error.
  */
-#if defined(CONFIG_MACH_ASUS_X00T) && defined(CONFIG_TOUCHSCREEN_NT36xxx)
+#if defined(CONFIG_MACH_ASUS_X00TD) && defined(CONFIG_TOUCHSCREEN_NT36xxx)
 int nvt_tp_check;
 #endif
 static struct device_node *mdss_dsi_find_panel_of_node(
@@ -3220,7 +3220,7 @@ static struct device_node *mdss_dsi_find_panel_of_node(
 		}
 		pr_info("%s: cmdline:%s panel_name:%s\n",
 			__func__, panel_cfg, panel_name);
-#if defined(CONFIG_MACH_ASUS_X00T) && defined(CONFIG_TOUCHSCREEN_NT36xxx)
+#if defined(CONFIG_MACH_ASUS_X00TD) && defined(CONFIG_TOUCHSCREEN_NT36xxx)
 		if (!strcmp(panel_name, "qcom,mdss_dsi_nt36672_1080p_video"))
 			nvt_tp_check = 0;
 		else if (!strcmp(panel_name,

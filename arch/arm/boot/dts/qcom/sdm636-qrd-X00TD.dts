@@ -17,9 +17,9 @@
 #include "sdm636-qrd.dtsi"
 #include "sdm660-internal-codec.dtsi"
 
-#include "X00T/sdm636-overlay.dtsi"
-#include "X00T/sdm636-qrd-overlay.dtsi"
-#include "X00T/sdm660-internal-codec-overlay.dtsi"
+#include "X00TD/sdm636-overlay.dtsi"
+#include "X00TD/sdm636-qrd-overlay.dtsi"
+#include "X00TD/sdm660-internal-codec-overlay.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. SDM 636 PM660 + PM660L QRD";

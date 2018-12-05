@@ -378,7 +378,7 @@ typedef enum nxpTFA9896BfEnumList {
    { 0xffff,"Unknown bitfield enum" }   /* not found */\
 };
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define TFA9896_BITNAMETABLE static tfaBfName_t Tfa9896BitNames[]= {\
    { 0x0, "flag_por"},    /* Power-on-reset flag (auto clear by reading)       , */\
    { 0x10, "flag_pll_lock"},    /* PLL lock to programmed frequency                  , */\
@@ -860,7 +860,7 @@ typedef enum nxpTFA9896BfEnumList {
    { 0x8f0f, "production_data6"},    /* production_data6                                  , */\
    { 0xffff,"Unknown bitfield enum" }    /* not found */\
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 enum TFA9896_irq {
 	TFA9896_irq_vdds = 0,

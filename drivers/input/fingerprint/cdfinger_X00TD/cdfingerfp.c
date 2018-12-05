@@ -43,7 +43,7 @@
 /* Huaqin modify for cpu_boost by leiyu at 2018/04/25 start */
 #include <linux/sched.h>
 /* Huaqin modify for cpu_boost by leiyu at 2018/04/25 end */
-#include "../common_X00T/fingerprint_common.h"
+#include "../common_X00TD/fingerprint_common.h"
 
 typedef struct key_report {
     int key;

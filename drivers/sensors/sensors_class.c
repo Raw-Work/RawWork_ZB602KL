@@ -451,7 +451,7 @@ static ssize_t sensors_calibrate_store(struct device *dev,
 	return size;
 }
 
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 static struct device_attribute sensors_class_attrs[] = {
 	__ATTR(name, 0444, sensors_name_show, NULL),
 	__ATTR(vendor, 0444, sensors_vendor_show, NULL),
@@ -478,7 +478,7 @@ static struct device_attribute sensors_class_attrs[] = {
 			sensors_calibrate_store),
 	__ATTR_NULL,
 };
-#endif /* !CONFIG_MACH_ASUS_X00T */
+#endif /* !CONFIG_MACH_ASUS_X00TD */
 
 /**
  * sensors_classdev_register - register a new object of sensors_classdev class.
@@ -517,7 +517,7 @@ void sensors_classdev_unregister(struct sensors_classdev *sensors_cdev)
 }
 EXPORT_SYMBOL(sensors_classdev_unregister);
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 static DEVICE_ATTR_RO(sensors_name);
 static DEVICE_ATTR_RO(sensors_vendor);
 static DEVICE_ATTR_RO(sensors_version);
@@ -571,14 +571,14 @@ static const struct attribute_group *sensor_groups[] = {
 	&sensor_group,
 	NULL,
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 static int __init sensors_init(void)
 {
 	sensors_class = class_create(THIS_MODULE, "sensors");
 	if (IS_ERR(sensors_class))
 		return PTR_ERR(sensors_class);
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	sensors_class->dev_groups = sensor_groups;
 #else
 	sensors_class->dev_attrs = sensors_class_attrs;

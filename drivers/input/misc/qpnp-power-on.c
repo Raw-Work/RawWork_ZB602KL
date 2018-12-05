@@ -32,7 +32,7 @@
 #include <linux/regulator/of_regulator.h>
 #include <linux/input/qpnp-power-on.h>
 #include <linux/power_supply.h>
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #include <linux/timer.h>
 
 static struct timer_list tm;
@@ -1281,7 +1281,7 @@ qpnp_pon_config_input(struct qpnp_pon *pon,  struct qpnp_pon_config *cfg)
 	return 0;
 }
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 static int
 qpnp_config_reset_reg(struct qpnp_pon *pon, struct qpnp_pon_config *cfg)
 {
@@ -1369,7 +1369,7 @@ static void start_timer(struct qpnp_pon *pon,  struct qpnp_pon_config *cfg)
 	tm.function = timer_func;
 	add_timer(&tm);
 }
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 static int qpnp_pon_config_init(struct qpnp_pon *pon)
 {
@@ -1721,7 +1721,7 @@ static int qpnp_pon_config_init(struct qpnp_pon *pon)
 			goto unreg_input_dev;
 		}
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 		if (cfg->pon_type == PON_KPDPWR)
 			start_timer(pon, cfg);
 #endif

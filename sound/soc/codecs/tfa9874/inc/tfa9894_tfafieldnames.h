@@ -534,7 +534,7 @@ typedef enum nxpTfa9894BfEnumList {
    { 0xffff,"Unknown bitfield enum" }   /* not found */\
 };
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #define TFA9894_BITNAMETABLE static tfaBfName_t Tfa9894BitNames[]= {\
    { 0x0, "powerdown"},    /* Powerdown control                                 , */\
    { 0x10, "reset"},    /* I2C Reset - Auto clear                            , */\
@@ -1060,7 +1060,7 @@ typedef enum nxpTfa9894BfEnumList {
    { 0xff07, "calibr_osc_delta_ndiv"},    /* Calibration data for OSC1M, signed number representation, */\
    { 0xffff,"Unknown bitfield enum" }    /* not found */\
 };
-#endif /* CONFIG_MACH_ASUS_X00T */
+#endif /* CONFIG_MACH_ASUS_X00TD */
 
 enum tfa9894_irq {
 	tfa9894_irq_max = -1,

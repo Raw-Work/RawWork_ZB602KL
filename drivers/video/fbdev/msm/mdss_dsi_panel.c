@@ -26,7 +26,7 @@
 #include "mdss_dsi.h"
 #include "mdss_dba_utils.h"
 #include "mdss_debug.h"
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 #include "mdss_panel.h"
 #endif
 #include "mdss_livedisplay.h"
@@ -36,7 +36,7 @@
 
 #define VSYNC_DELAY msecs_to_jiffies(17)
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 extern char mdss_mdp_panel[MDSS_MAX_PANEL_LEN];
 #endif
 
@@ -380,7 +380,7 @@ ret:
 	return rc;
 }
 
-#if defined(CONFIG_MACH_ASUS_X00T) && defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
+#if defined(CONFIG_MACH_ASUS_X00TD) && defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
 extern long syna_gesture_mode;
 #endif
 int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
@@ -507,13 +507,13 @@ int mdss_dsi_panel_reset(struct mdss_panel_data *pdata, int enable)
 			gpio_set_value((ctrl_pdata->disp_en_gpio), 0);
 			gpio_free(ctrl_pdata->disp_en_gpio);
 		}
-#if defined(CONFIG_MACH_ASUS_X00T) && defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
+#if defined(CONFIG_MACH_ASUS_X00TD) && defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
 		if (strstr(mdss_mdp_panel,
 			"qcom,mdss_dsi_td4310_1080p_video_txd") &&
 			syna_gesture_mode == 0)
 #endif
 		gpio_set_value((ctrl_pdata->rst_gpio), 0);
-#if defined(CONFIG_MACH_ASUS_X00T) && defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
+#if defined(CONFIG_MACH_ASUS_X00TD) && defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
 		else
 			gpio_set_value((ctrl_pdata->rst_gpio), 1);
 #endif
@@ -2966,7 +2966,7 @@ static int mdss_panel_parse_dt(struct device_node *np,
 	mdss_dsi_parse_dcs_cmds(np, &ctrl_pdata->off_cmds,
 		"qcom,mdss-dsi-off-command", "qcom,mdss-dsi-off-command-state");
 
-#ifdef CONFIG_MACH_ASUS_X00T
+#ifdef CONFIG_MACH_ASUS_X00TD
 	mdss_dsi_parse_dcs_cmds(np, &ctrl_pdata->esd_recover_cmds,
 		"qcom,mdss-dsi-esd-recover-command", "qcom,mdss-dsi-esd-recover-command-state");
 #endif

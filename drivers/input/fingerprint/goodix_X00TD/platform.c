@@ -12,7 +12,7 @@
 #include <linux/err.h>
 
 #include "gf_spi.h"
-#include "../common_X00T/fingerprint_common.h"
+#include "../common_X00TD/fingerprint_common.h"
 
 #if defined(USE_SPI_BUS)
 #include <linux/spi/spi.h>
