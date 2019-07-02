@@ -336,7 +336,7 @@
 
 #define KEY_MICMUTE		248	/* Mute / unmute the microphone */
 
-#if defined(CONFIG_MACH_ASUS_X00T) && (defined(CONFIG_TOUCHSCREEN_NT36xxx) || defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27))
+#if defined(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_v27)
 #define KEY_TP_GESTURE_C 	249
 #define KEY_TP_GESTURE_E 	250
 #define KEY_TP_GESTURE_S 	251

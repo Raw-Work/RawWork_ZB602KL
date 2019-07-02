@@ -138,9 +138,7 @@ static void apen_lift(void)
 	input_sync(apen->apen_dev);
 	apen->apen_present = false;
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 static void apen_report(void)
@@ -238,9 +236,7 @@ static void apen_report(void)
 
 	apen->apen_present = true;
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 static void apen_set_params(void)
@@ -376,9 +372,7 @@ static int apen_scan_pdt(void)
 				switch (fd.fn_number) {
 				case SYNAPTICS_RMI4_F12:
 					goto f12_found;
-#ifdef CONFIG_MACH_ASUS_X00T
 					break;
-#endif
 				}
 			} else {
 				break;
@@ -546,9 +540,7 @@ static void synaptics_rmi4_apen_remove(struct synaptics_rmi4_data *rmi4_data)
 exit:
 	complete(&apen_remove_complete);
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 static void synaptics_rmi4_apen_reset(struct synaptics_rmi4_data *rmi4_data)
@@ -562,9 +554,7 @@ static void synaptics_rmi4_apen_reset(struct synaptics_rmi4_data *rmi4_data)
 
 	apen_scan_pdt();
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 static void synaptics_rmi4_apen_reinit(struct synaptics_rmi4_data *rmi4_data)
@@ -574,9 +564,7 @@ static void synaptics_rmi4_apen_reinit(struct synaptics_rmi4_data *rmi4_data)
 
 	apen_lift();
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 static void synaptics_rmi4_apen_e_suspend(struct synaptics_rmi4_data *rmi4_data)
@@ -586,9 +574,7 @@ static void synaptics_rmi4_apen_e_suspend(struct synaptics_rmi4_data *rmi4_data)
 
 	apen_lift();
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 static void synaptics_rmi4_apen_suspend(struct synaptics_rmi4_data *rmi4_data)
@@ -598,9 +584,8 @@ static void synaptics_rmi4_apen_suspend(struct synaptics_rmi4_data *rmi4_data)
 
 	apen_lift();
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
+
 }
 
 static struct synaptics_rmi4_exp_fn active_pen_module = {
@@ -629,9 +614,7 @@ static void __exit rmi4_active_pen_module_exit(void)
 
 	wait_for_completion(&apen_remove_complete);
 
-#ifdef CONFIG_MACH_ASUS_X00T
 	return;
-#endif
 }
 
 module_init(rmi4_active_pen_module_init);
