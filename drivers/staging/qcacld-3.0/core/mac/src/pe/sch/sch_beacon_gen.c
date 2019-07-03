@@ -1018,14 +1018,15 @@ void sch_process_pre_beacon_ind(tpAniSirGlobal pMac, tpSirMsgQ limMsg)
 
 	switch (GET_LIM_SYSTEM_ROLE(psessionEntry)) {
 
-	case eLIM_STA_IN_IBSS_ROLE:
+	case eLIM_STA_IN_IBSS_ROLE: {
 		/* generate IBSS parameter set */
-		if (psessionEntry->statypeForBss == STA_ENTRY_SELF)
+		if (psessionEntry->statypeForBss == STA_ENTRY_SELF) {
 			write_beacon_to_memory(pMac, (uint16_t) beaconSize,
 					       (uint16_t) beaconSize,
 					       psessionEntry);
-		else
+		} else
 			pe_err("can not send beacon for PEER session entry");
+			}
 			break;
 
 	case eLIM_AP_ROLE: {
